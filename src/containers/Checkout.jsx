@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext.js';
 import App from '../routes/App.jsx';
@@ -20,6 +21,10 @@ const Checkout = () => {
     }
 
     return(
+        <>
+        <Helmet>
+            <title>Platzi Conf Merch -Chechout</title>
+        </Helmet>
         <div className="Checkout">
             <div className="Checkout-content">
                 {cart.length > 0 ? <h3>Lista De Pedidos:</h3> : <h3>Sin Pedidos</h3> }
@@ -44,6 +49,7 @@ const Checkout = () => {
                 </div>
             )}
         </div>
+        </>
     );
 }
 
