@@ -1,8 +1,18 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 import initialState from '../initialState.js';
+
+const API = 'http://localhost:3007/products'
+
 
 const useInitialState = () => {
     const [state,setState] = useState(initialState);
+    const [products,setProducts] = useState([]);
+
+    useEffect(async () => {
+        const response = await axios(API)
+        setProducts(response.data)
+    },[])
     const addToCart = payload => {
         setState({
             ...state,
@@ -34,6 +44,7 @@ const useInitialState = () => {
         addToCart,
         removeFromCart,
         addToBuyer,
+        products,
         state,
     }
 };
